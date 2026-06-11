@@ -1,8 +1,7 @@
 import { useEffect, useState, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { Users, Plus, Trash2, CheckCircle, Phone, Mail, Target, Search, Download, RefreshCw, Upload } from 'lucide-react';
-import { getLeads, createLead, updateLead, deleteLead, subscribeToLeads, exportLeadsCSV, bulkCreateLeads } from '../supabase/leads';
-import { supabase } from '../supabase/client';
+import { getLeads, createLead, updateLead, deleteLead, subscribeToLeads, exportLeadsCSV, bulkCreateLeads } from '../firebase/leads';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 
@@ -56,7 +55,6 @@ const Leads = () => {
     });
     return () => {
       if (subscription?.unsubscribe) subscription.unsubscribe();
-      else if (supabase?.removeChannel) supabase.removeChannel(subscription);
     };
   }, []);
 

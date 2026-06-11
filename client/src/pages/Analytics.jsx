@@ -8,7 +8,7 @@ import {
   LineElement, PointElement, ArcElement, Title, Tooltip, Legend, Filler
 } from 'chart.js';
 import { TrendingUp, Users, DollarSign, BarChart2, Globe } from 'lucide-react';
-import { getLeads } from '../supabase/leads';
+import { getLeads } from '../firebase/leads';
 
 ChartJS.register(
   CategoryScale, LinearScale, BarElement, LineElement,

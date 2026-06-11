@@ -4,7 +4,7 @@ import {
   Zap, Copy, Save, RefreshCw, Camera, Megaphone,
   BookOpen, Hash, Search, Mail, Film, CheckCircle, Trash2
 } from 'lucide-react';
-import { generateAIContent, getSavedContent, deleteContent, saveContent } from '../supabase/aiService';
+import { generateAIContent, getSavedContent, deleteContent, saveContent } from '../firebase/aiService';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 

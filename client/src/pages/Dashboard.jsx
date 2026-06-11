@@ -6,8 +6,7 @@ import {
   Chart as ChartJS, CategoryScale, LinearScale, BarElement,
   LineElement, PointElement, Title, Tooltip, Legend, Filler
 } from 'chart.js';
-import { supabase } from '../supabase/client';
-import { getLeads, subscribeToLeads } from '../supabase/leads';
+import { getLeads, subscribeToLeads } from '../firebase/leads';
 import { useAuth } from '../context/AuthContext';
 import { Link } from 'react-router-dom';
 
@@ -76,7 +75,6 @@ const Dashboard = () => {
 
     return () => {
       if (subscription?.unsubscribe) subscription.unsubscribe();
-      else if (supabase?.removeChannel) supabase.removeChannel(subscription);
     };
   }, []);
 

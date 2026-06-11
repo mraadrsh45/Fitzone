@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Search, TrendingUp, FileText, Copy, CheckCircle, Globe, Zap } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { generateAIContent } from '../supabase/aiService';
+import { generateAIContent } from '../firebase/aiService';
 import { useAuth } from '../context/AuthContext';
 
 const SEOTools = () => {

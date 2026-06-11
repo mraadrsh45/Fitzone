@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
-import { createLead } from '../supabase/leads';
+import { createLead } from '../firebase/leads';
 import toast from 'react-hot-toast';
 
 const ContactForm = () => {

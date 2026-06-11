@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { auth } from '../firebase/config';
+import { auth, db } from '../firebase/config';
+import { doc, getDoc, setDoc, serverTimestamp } from 'firebase/firestore';
 import * as authService from '../firebase/authService';
-import api from '../services/api';
 
 const AuthContext = createContext();
 
@@ -17,26 +17,32 @@ export const AuthProvider = ({ children }) => {
       if (firebaseUser) {
         setUser(firebaseUser);
         try {
-          // Fetch MongoDB profile data using our API
-          const res = await api.get('/auth/me');
-          setProfile(res.user);
-        } catch (err) {
-          if (err.message.includes('User not found')) {
+          // Fetch Firestore profile data
+          const userRef = doc(db, 'users', firebaseUser.uid);
+          const docSnap = await getDoc(userRef);
+          
+          if (docSnap.exists()) {
+            setProfile(docSnap.data());
+          } else {
+            // Auto-upsert if missing
             try {
-              const upsertRes = await api.post('/auth/upsert', {
+              const newProfile = {
                 email: firebaseUser.email,
-                name: firebaseUser.displayName,
-                avatar_url: firebaseUser.photoURL
-              });
-              setProfile(upsertRes.user);
+                name: firebaseUser.displayName || '',
+                gymName: '',
+                avatar_url: firebaseUser.photoURL || '',
+                created_at: serverTimestamp()
+              };
+              await setDoc(userRef, newProfile);
+              setProfile(newProfile);
             } catch (upsertErr) {
               console.error("Failed to auto-upsert user", upsertErr);
               setProfile(null);
             }
-          } else {
-            console.error("Failed to fetch profile", err);
-            setProfile(null);
           }
+        } catch (err) {
+          console.error("Failed to fetch profile", err);
+          setProfile(null);
         }
       } else {
         setUser(null);
@@ -78,8 +84,11 @@ export const AuthProvider = ({ children }) => {
   const refreshProfile = async () => {
     if (user) {
       try {
-        const res = await api.get('/auth/me');
-        setProfile(res.user);
+        const userRef = doc(db, 'users', user.uid);
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          setProfile(docSnap.data());
+        }
       } catch (err) {
         console.error(err);
       }

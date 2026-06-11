@@ -10,10 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@supabase/ssr": "^0.10.3",
-    "@supabase/supabase-js": "^2.106.2",
     "@tailwindcss/vite": "^4.3.0",
-    "axios": "^1.16.1",
     "chart.js": "^4.5.1",
     "firebase": "^12.14.0",
     "framer-motion": "^12.40.0",
