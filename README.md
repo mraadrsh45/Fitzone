@@ -72,6 +72,7 @@ MONGO_URI=mongodb://localhost:27017/fitzone
 JWT_SECRET=your_jwt_secret_here
 OPENAI_API_KEY=your_openai_key_here  # Optional — uses mock data if not set
 ```
+click : https://fitzone-six-eta.vercel.app
 
 ---
 
