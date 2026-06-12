@@ -25,7 +25,7 @@ const ContactForm = () => {
   };
 
   const contactInfo = [
-    { icon: <Phone size={18} />, label: 'Phone', value: '+91 98765 43210', color: '#22c55e' },
+    { icon: <Phone size={18} />, label: 'Phone', value: '+91 9056390498, +91 8054464525', color: '#22c55e' },
     { icon: <Mail size={18} />, label: 'Email', value: 'hello@fitzoneai.com', color: '#3b82f6' },
     { icon: <MapPin size={18} />, label: 'Location', value: 'Sector 14, Rohtak, Haryana 124001', color: '#ef4444' },
   ];
