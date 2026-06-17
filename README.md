@@ -14,8 +14,7 @@
 - **Membership Plans** — ₹999 / ₹2,499 / ₹7,999 plans
 - **Trainer Profiles** — Certified trainer cards
 - **Testimonials Carousel** — Client success stories
-- **Mobile Responsive** — Premium dark UI with Tailwind CSS
-
+- **Mobile Responsive** — Premium dark UI with Tailwind CSs
 ---
 
 ## 📁 Folder Structure
