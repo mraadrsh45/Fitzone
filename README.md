@@ -128,7 +128,8 @@ click : https://fitzone-six-eta.vercel.app
 
 ## 👨‍💻 Developed By
 
-**Luxman Kumar 
+- **Luxman Kumar** - [@mraadrsh45](https://github.com/mraadrsh45)
+- **Email**: [luxmankumar628@gmail.com](mailto:luxmankumar628@gmail.com)
 Built with ❤️ using MERN Stack + OpenAI
 
 ---
